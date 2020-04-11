@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cd-app
+
+spec:
+  selector:
+    matchLabels:
+      app: cd-app
+
+  template:
+    metadata:
+      labels:
+        app: cd-app
+    
+    spec:
+      containers:
+      - name: cd-app
+        image: img-app-deployment
+        ports:
+        - containerPort: 80
+
+        env:
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pass
+              key: password
+
+        envFrom:
+        - configMapRef:
+            name: cd-app-conf
+
+        volumeMounts:
+        - name: cd-app-conf
+          mountPath: /var/www/.env
+          subPath: .env
+
+      volumes:
+      - name: cd-app-conf
+        configMap:
+          name: cd-app-conf
+          items:
+            - key: env
+              path: .env

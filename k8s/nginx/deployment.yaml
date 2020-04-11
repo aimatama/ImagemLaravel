@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:   
+  name: cd-nginx
+spec:
+  selector:
+    matchLabels:
+      app: cd-nginx
+  template:
+    metadata:
+      labels:
+        app: cd-nginx
+    spec:
+      containers:
+      - name: cd-nginx
+        image: nginx:1.16-alpine
+        ports:
+        - containerPort: 80
+
+        volumeMounts:
+        - mountPath: /etc/nginx/conf.d
+          name: cd-nginx-conf
+          readOnly: true
+
+      volumes:
+      - name: cd-nginx-conf
+        configMap:
+          name: cd-nginx-conf
+          items:
+            - key: nginx.conf
+              path: nginx.conf
+           
