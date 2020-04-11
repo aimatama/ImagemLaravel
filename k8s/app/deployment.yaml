@@ -29,17 +29,17 @@ spec:
 
         envFrom:
         - configMapRef:
-            name: cd-app-conf
+            name: app-conf
 
         volumeMounts:
-        - name: cd-app-conf
+        - name: app-conf
           mountPath: /var/www/.env
           subPath: .env
 
       volumes:
-      - name: cd-app-conf
+      - name: app-conf
         configMap:
-          name: cd-app-conf
+          name: app-conf
           items:
             - key: env
               path: .env

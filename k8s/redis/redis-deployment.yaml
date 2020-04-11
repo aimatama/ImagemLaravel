@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cd-redis-master
+  name: redis-master
   labels:
     app: redis
 spec:
@@ -26,9 +26,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: cd-redis-service
+  name: redis-service
   labels:
-    app: cd-redis-service
+    app: redis-service
     role: master
 spec:
   ports:

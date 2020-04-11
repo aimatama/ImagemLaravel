@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-    name: cd-mysql-service
+    name: mysql-service
 spec:
     ports:
         - port: 3306
     selector:
-        app: cd-mysql-server
+        app: mysql-server
         tier: db
     clusterIP: None
     

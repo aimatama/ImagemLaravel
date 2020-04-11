@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: cd-nginx-conf
+  name: nginx-conf
 data:
   nginx.conf: |
 
