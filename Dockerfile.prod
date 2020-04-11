@@ -13,9 +13,11 @@ COPY . /var/www
 
 RUN chmod a+rx k8s/entrypoint.sh
 
+RUN chmod a+rx .env
+
 RUN composer install \
     && php artisan cache:clear \ 
-    && chmod -R 777 storage
+    && chmod -R 775 storage
 
 RUN ln -s public html
 
