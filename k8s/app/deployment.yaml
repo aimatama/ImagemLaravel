@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cd-app
+  name: app
 
 spec:
   selector:
     matchLabels:
-      app: cd-app
+      app: app
 
   template:
     metadata:
       labels:
-        app: cd-app
+        app: app
     
     spec:
       containers:
-      - name: cd-app
+      - name: app
         image: img-app-deployment
         ports:
         - containerPort: 80
