@@ -21,11 +21,7 @@ spec: # referente ao Deployment
                 - "--ignore-db-dir=lost+found"
               env:
               - name: MYSQL_ROOT_PASSWORD
-                #value: root
-                valueFrom:
-                    secretKeyRef:
-                        name: mysql-pass
-                        key: password
+                value: root
               ports:
               - containerPort: 3306
               volumeMounts: #monta os volumes definidos logo abaixo
